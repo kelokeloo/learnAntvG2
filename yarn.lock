@@ -233,6 +233,181 @@
     react-sortable-hoc "^2.0.0"
     swr "^1.2.0"
 
+"@antv/adjust@^0.2.1":
+  version "0.2.5"
+  resolved "https://artifactory.gz.cvte.cn/artifactory/api/npm/cvte-npm-registry/@antv/adjust/-/adjust-0.2.5.tgz#bb37bb4a0a87ca3f4b660848bc9ac07f02bcf5db"
+  integrity sha1-uze7SgqHyj9LZghIvJrAfwK89ds=
+  dependencies:
+    "@antv/util" "~2.0.0"
+    tslib "^1.10.0"
+
+"@antv/attr@^0.3.1":
+  version "0.3.3"
+  resolved "https://artifactory.gz.cvte.cn/artifactory/api/npm/cvte-npm-registry/@antv/attr/-/attr-0.3.3.tgz#9966895cdc31e331b1cc738c286d50f48da01d2b"
+  integrity sha1-mWaJXNwx4zGxzHOMKG1Q9I2gHSs=
+  dependencies:
+    "@antv/color-util" "^2.0.1"
+    "@antv/util" "~2.0.0"
+    tslib "^1.10.0"
+
+"@antv/color-util@^2.0.1", "@antv/color-util@^2.0.2", "@antv/color-util@^2.0.3":
+  version "2.0.6"
+  resolved "https://artifactory.gz.cvte.cn/artifactory/api/npm/cvte-npm-registry/@antv/color-util/-/color-util-2.0.6.tgz#5e129bb9ce3f2b9309b52102b3dc929430ccc016"
+  integrity sha1-XhKbuc4/K5MJtSECs9ySlDDMwBY=
+  dependencies:
+    "@antv/util" "^2.0.9"
+    tslib "^2.0.3"
+
+"@antv/component@^0.8.27":
+  version "0.8.28"
+  resolved "https://artifactory.gz.cvte.cn/artifactory/api/npm/cvte-npm-registry/@antv/component/-/component-0.8.28.tgz#b816d1801334de478b858a6d6ee3efe214c878b9"
+  integrity sha1-uBbRgBM03keLhYptbuPv4hTIeLk=
+  dependencies:
+    "@antv/color-util" "^2.0.3"
+    "@antv/dom-util" "~2.0.1"
+    "@antv/g-base" "^0.5.9"
+    "@antv/matrix-util" "^3.1.0-beta.1"
+    "@antv/path-util" "~2.0.7"
+    "@antv/scale" "~0.3.1"
+    "@antv/util" "~2.0.0"
+    fecha "~4.2.0"
+    tslib "^2.0.3"
+
+"@antv/coord@^0.3.0":
+  version "0.3.1"
+  resolved "https://artifactory.gz.cvte.cn/artifactory/api/npm/cvte-npm-registry/@antv/coord/-/coord-0.3.1.tgz#982e261d8a1e06a198eb518ea7acc20ed875a019"
+  integrity sha1-mC4mHYoeBqGY61GOp6zCDth1oBk=
+  dependencies:
+    "@antv/matrix-util" "^3.1.0-beta.2"
+    "@antv/util" "~2.0.12"
+    tslib "^2.1.0"
+
+"@antv/dom-util@^2.0.2", "@antv/dom-util@~2.0.1":
+  version "2.0.4"
+  resolved "https://artifactory.gz.cvte.cn/artifactory/api/npm/cvte-npm-registry/@antv/dom-util/-/dom-util-2.0.4.tgz#b09b56c56fec42896fc856edad56b595b47ab514"
+  integrity sha1-sJtWxW/sQolvyFbtrVa1lbR6tRQ=
+  dependencies:
+    tslib "^2.0.3"
+
+"@antv/event-emitter@^0.1.1", "@antv/event-emitter@~0.1.0":
+  version "0.1.3"
+  resolved "https://artifactory.gz.cvte.cn/artifactory/api/npm/cvte-npm-registry/@antv/event-emitter/-/event-emitter-0.1.3.tgz#3e06323b9dcd55a3241ddc7c5458cfabd2095164"
+  integrity sha1-PgYyO53NVaMkHdx8VFjPq9IJUWQ=
+
+"@antv/g-base@^0.5.3", "@antv/g-base@^0.5.9", "@antv/g-base@~0.5.6":
+  version "0.5.11"
+  resolved "https://artifactory.gz.cvte.cn/artifactory/api/npm/cvte-npm-registry/@antv/g-base/-/g-base-0.5.11.tgz#fe251cfbe557f6c1777787d58c3f2884a42f4934"
+  integrity sha1-/iUc++VX9sF3d4fVjD8ohKQvSTQ=
+  dependencies:
+    "@antv/event-emitter" "^0.1.1"
+    "@antv/g-math" "^0.1.6"
+    "@antv/matrix-util" "^3.1.0-beta.1"
+    "@antv/path-util" "~2.0.5"
+    "@antv/util" "~2.0.13"
+    "@types/d3-timer" "^2.0.0"
+    d3-ease "^1.0.5"
+    d3-interpolate "^1.3.2"
+    d3-timer "^1.0.9"
+    detect-browser "^5.1.0"
+    tslib "^2.0.3"
+
+"@antv/g-canvas@~0.5.10":
+  version "0.5.12"
+  resolved "https://artifactory.gz.cvte.cn/artifactory/api/npm/cvte-npm-registry/@antv/g-canvas/-/g-canvas-0.5.12.tgz#2fc40dced6994f074f22341e65d56f7bbd5275f7"
+  integrity sha1-L8QNztaZTwdPIjQeZdVve71Sdfc=
+  dependencies:
+    "@antv/g-base" "^0.5.3"
+    "@antv/g-math" "^0.1.6"
+    "@antv/matrix-util" "^3.1.0-beta.1"
+    "@antv/path-util" "~2.0.5"
+    "@antv/util" "~2.0.0"
+    gl-matrix "^3.0.0"
+    tslib "^2.0.3"
+
+"@antv/g-math@^0.1.6":
+  version "0.1.7"
+  resolved "https://artifactory.gz.cvte.cn/artifactory/api/npm/cvte-npm-registry/@antv/g-math/-/g-math-0.1.7.tgz#6ec2769269f7ccb67e58140d5739df74046cc04e"
+  integrity sha1-bsJ2kmn3zLZ+WBQNVznfdARswE4=
+  dependencies:
+    "@antv/util" "~2.0.0"
+    gl-matrix "^3.0.0"
+
+"@antv/g-svg@~0.5.6":
+  version "0.5.6"
+  resolved "https://artifactory.gz.cvte.cn/artifactory/api/npm/cvte-npm-registry/@antv/g-svg/-/g-svg-0.5.6.tgz#70b2fa980c431b39ad3c5b4b53e36a1d60957d65"
+  integrity sha1-cLL6mAxDGzmtPFtLU+NqHWCVfWU=
+  dependencies:
+    "@antv/g-base" "^0.5.3"
+    "@antv/g-math" "^0.1.6"
+    "@antv/util" "~2.0.0"
+    detect-browser "^5.0.0"
+    tslib "^2.0.3"
+
+"@antv/g2@^4.2.7":
+  version "4.2.7"
+  resolved "https://artifactory.gz.cvte.cn/artifactory/api/npm/cvte-npm-registry/@antv/g2/-/g2-4.2.7.tgz#f2d457a15edade9fee416e4e254bc1c17fce4442"
+  integrity sha1-8tRXoV7a3p/uQW5OJUvBwX/OREI=
+  dependencies:
+    "@antv/adjust" "^0.2.1"
+    "@antv/attr" "^0.3.1"
+    "@antv/color-util" "^2.0.2"
+    "@antv/component" "^0.8.27"
+    "@antv/coord" "^0.3.0"
+    "@antv/dom-util" "^2.0.2"
+    "@antv/event-emitter" "~0.1.0"
+    "@antv/g-base" "~0.5.6"
+    "@antv/g-canvas" "~0.5.10"
+    "@antv/g-svg" "~0.5.6"
+    "@antv/matrix-util" "^3.1.0-beta.3"
+    "@antv/path-util" "^2.0.15"
+    "@antv/scale" "^0.3.14"
+    "@antv/util" "~2.0.5"
+    tslib "^2.0.0"
+
+"@antv/matrix-util@^3.0.4":
+  version "3.0.4"
+  resolved "https://artifactory.gz.cvte.cn/artifactory/api/npm/cvte-npm-registry/@antv/matrix-util/-/matrix-util-3.0.4.tgz#ea13f158aa2fb4ba2fb8d6b6b561ec467ea3ac20"
+  integrity sha1-6hPxWKovtLovuNa2tWHsRn6jrCA=
+  dependencies:
+    "@antv/util" "^2.0.9"
+    gl-matrix "^3.3.0"
+    tslib "^2.0.3"
+
+"@antv/matrix-util@^3.1.0-beta.1", "@antv/matrix-util@^3.1.0-beta.2", "@antv/matrix-util@^3.1.0-beta.3":
+  version "3.1.0-beta.3"
+  resolved "https://artifactory.gz.cvte.cn/artifactory/api/npm/cvte-npm-registry/@antv/matrix-util/-/matrix-util-3.1.0-beta.3.tgz#e061de8fa7be04605a155c69cc5ce9082eedddee"
+  integrity sha1-4GHej6e+BGBaFVxpzFzpCC7t3e4=
+  dependencies:
+    "@antv/util" "^2.0.9"
+    gl-matrix "^3.4.3"
+    tslib "^2.0.3"
+
+"@antv/path-util@^2.0.15", "@antv/path-util@~2.0.5", "@antv/path-util@~2.0.7":
+  version "2.0.15"
+  resolved "https://artifactory.gz.cvte.cn/artifactory/api/npm/cvte-npm-registry/@antv/path-util/-/path-util-2.0.15.tgz#a6f691dfc8b7bce5be7f0aabb5bd614964325631"
+  integrity sha1-pvaR38i3vOW+fwqrtb1hSWQyVjE=
+  dependencies:
+    "@antv/matrix-util" "^3.0.4"
+    "@antv/util" "^2.0.9"
+    tslib "^2.0.3"
+
+"@antv/scale@^0.3.14", "@antv/scale@~0.3.1":
+  version "0.3.18"
+  resolved "https://artifactory.gz.cvte.cn/artifactory/api/npm/cvte-npm-registry/@antv/scale/-/scale-0.3.18.tgz#b911f431b3e0b9547b6a65f66d0d3fa295b5ef32"
+  integrity sha1-uRH0MbPguVR7amX2bQ0/opW17zI=
+  dependencies:
+    "@antv/util" "~2.0.3"
+    fecha "~4.2.0"
+    tslib "^2.0.0"
+
+"@antv/util@^2.0.9", "@antv/util@~2.0.0", "@antv/util@~2.0.12", "@antv/util@~2.0.13", "@antv/util@~2.0.3", "@antv/util@~2.0.5":
+  version "2.0.17"
+  resolved "https://artifactory.gz.cvte.cn/artifactory/api/npm/cvte-npm-registry/@antv/util/-/util-2.0.17.tgz#e8ef42aca7892815b229269f3dd10c6b3c7597a9"
+  integrity sha1-6O9CrKeJKBWyKSafPdEMazx1l6k=
+  dependencies:
+    csstype "^3.0.8"
+    tslib "^2.0.3"
+
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.16.7", "@babel/code-frame@^7.18.6":
   version "7.18.6"
   resolved "https://artifactory.gz.cvte.cn/artifactory/api/npm/cvte-npm-registry/@babel/code-frame/-/code-frame-7.18.6.tgz#3b25d38c89600baa2dcc219edfa88a74eb2c427a"
@@ -1181,6 +1356,11 @@
   integrity sha1-X89q5EXkAh0fwiGaSHPMc6O7KtE=
   dependencies:
     "@types/node" "*"
+
+"@types/d3-timer@^2.0.0":
+  version "2.0.1"
+  resolved "https://artifactory.gz.cvte.cn/artifactory/api/npm/cvte-npm-registry/@types/d3-timer/-/d3-timer-2.0.1.tgz#ffb6620d290624f3726aa362c0c8a4b44c8d7200"
+  integrity sha1-/7ZiDSkGJPNyaqNiwMiktEyNcgA=
 
 "@types/express-serve-static-core@^4.17.18":
   version "4.17.30"
@@ -2511,7 +2691,7 @@ csso@^4.2.0:
   dependencies:
     css-tree "^1.1.2"
 
-csstype@^3.0.10, csstype@^3.0.2:
+csstype@^3.0.10, csstype@^3.0.2, csstype@^3.0.8:
   version "3.1.0"
   resolved "https://artifactory.gz.cvte.cn/artifactory/api/npm/cvte-npm-registry/csstype/-/csstype-3.1.0.tgz#4ddcac3718d787cf9df0d1b7d15033925c8f29f2"
   integrity sha1-TdysNxjXh8+d8NG30VAzklyPKfI=
@@ -2520,6 +2700,28 @@ current-script-polyfill@1.0.0:
   version "1.0.0"
   resolved "https://artifactory.gz.cvte.cn/artifactory/api/npm/cvte-npm-registry/current-script-polyfill/-/current-script-polyfill-1.0.0.tgz#f31cf7e4f3e218b0726e738ca92a02d3488ef615"
   integrity sha1-8xz35PPiGLBybnOMqSoC00iO9hU=
+
+d3-color@1:
+  version "1.4.1"
+  resolved "https://artifactory.gz.cvte.cn/artifactory/api/npm/cvte-npm-registry/d3-color/-/d3-color-1.4.1.tgz#c52002bf8846ada4424d55d97982fef26eb3bc8a"
+  integrity sha1-xSACv4hGraRCTVXZeYL+8m6zvIo=
+
+d3-ease@^1.0.5:
+  version "1.0.7"
+  resolved "https://artifactory.gz.cvte.cn/artifactory/api/npm/cvte-npm-registry/d3-ease/-/d3-ease-1.0.7.tgz#9a834890ef8b8ae8c558b2fe55bd57f5993b85e2"
+  integrity sha1-moNIkO+LiujFWLL+Vb1X9Zk7heI=
+
+d3-interpolate@^1.3.2:
+  version "1.4.0"
+  resolved "https://artifactory.gz.cvte.cn/artifactory/api/npm/cvte-npm-registry/d3-interpolate/-/d3-interpolate-1.4.0.tgz#526e79e2d80daa383f9e0c1c1c7dcc0f0583e987"
+  integrity sha1-Um554tgNqjg/ngwcHH3MDwWD6Yc=
+  dependencies:
+    d3-color "1"
+
+d3-timer@^1.0.9:
+  version "1.0.10"
+  resolved "https://artifactory.gz.cvte.cn/artifactory/api/npm/cvte-npm-registry/d3-timer/-/d3-timer-1.0.10.tgz#dfe76b8a91748831b13b6d9c793ffbd508dd9de5"
+  integrity sha1-3+dripF0iDGxO22ceT/71QjdneU=
 
 d@1, d@^1.0.1:
   version "1.0.1"
@@ -2576,6 +2778,11 @@ des.js@^1.0.0:
   dependencies:
     inherits "^2.0.1"
     minimalistic-assert "^1.0.0"
+
+detect-browser@^5.0.0, detect-browser@^5.1.0:
+  version "5.3.0"
+  resolved "https://artifactory.gz.cvte.cn/artifactory/api/npm/cvte-npm-registry/detect-browser/-/detect-browser-5.3.0.tgz#9705ef2bddf46072d0f7265a1fe300e36fe7ceca"
+  integrity sha1-lwXvK930YHLQ9yZaH+MA42/nzso=
 
 detect-indent@^6.0.0:
   version "6.1.0"
@@ -3435,6 +3642,11 @@ fb-watchman@^2.0.0:
   dependencies:
     bser "2.1.1"
 
+fecha@~4.2.0:
+  version "4.2.3"
+  resolved "https://artifactory.gz.cvte.cn/artifactory/api/npm/cvte-npm-registry/fecha/-/fecha-4.2.3.tgz#4d9ccdbc61e8629b259fdca67e65891448d569fd"
+  integrity sha1-TZzNvGHoYpsln9ymfmWJFEjVaf0=
+
 fill-range@^7.0.1:
   version "7.0.1"
   resolved "https://artifactory.gz.cvte.cn/artifactory/api/npm/cvte-npm-registry/fill-range/fill-range-7.0.1.tgz#1919a6a7c75fe38b2c7c77e5198535da9acdda40"
@@ -3596,6 +3808,11 @@ git-hooks-list@1.0.3:
   version "1.0.3"
   resolved "https://artifactory.gz.cvte.cn/artifactory/api/npm/cvte-npm-registry/git-hooks-list/-/git-hooks-list-1.0.3.tgz#be5baaf78203ce342f2f844a9d2b03dba1b45156"
   integrity sha1-vluq94IDzjQvL4RKnSsD26G0UVY=
+
+gl-matrix@^3.0.0, gl-matrix@^3.3.0, gl-matrix@^3.4.3:
+  version "3.4.3"
+  resolved "https://artifactory.gz.cvte.cn/artifactory/api/npm/cvte-npm-registry/gl-matrix/-/gl-matrix-3.4.3.tgz#fc1191e8320009fd4d20e9339595c6041ddc22c9"
+  integrity sha1-/BGR6DIACf1NIOkzlZXGBB3cIsk=
 
 glob-parent@^5.1.2, glob-parent@~5.1.2:
   version "5.1.2"
@@ -6118,7 +6335,7 @@ tslib@^1.10.0, tslib@^1.8.1:
   resolved "https://artifactory.gz.cvte.cn/artifactory/api/npm/cvte-npm-registry/tslib/tslib-1.14.1.tgz#cf2d38bdc34a134bcaf1091c41f6619e2f672d00"
   integrity sha1-zy04vcNKE0vK8QkcQfZhni9nLQA=
 
-tslib@^2.0.0, tslib@^2.0.3:
+tslib@^2.0.0, tslib@^2.0.3, tslib@^2.1.0:
   version "2.4.0"
   resolved "https://artifactory.gz.cvte.cn/artifactory/api/npm/cvte-npm-registry/tslib/-/tslib-2.4.0.tgz#7cecaa7f073ce680a05847aa77be941098f36dc3"
   integrity sha1-fOyqfwc85oCgWEeqd76UEJjzbcM=
