@@ -1438,6 +1438,11 @@
   dependencies:
     "@types/istanbul-lib-report" "*"
 
+"@types/js-cookie@^2.x.x":
+  version "2.2.7"
+  resolved "https://artifactory.gz.cvte.cn/artifactory/api/npm/cvte-npm-registry/@types/js-cookie/-/js-cookie-2.2.7.tgz#226a9e31680835a6188e887f3988e60c04d3f6a3"
+  integrity sha1-ImqeMWgINaYYjoh/OYjmDATT9qM=
+
 "@types/json-schema@^7.0.8", "@types/json-schema@^7.0.9":
   version "7.0.11"
   resolved "https://artifactory.gz.cvte.cn/artifactory/api/npm/cvte-npm-registry/@types/json-schema/-/json-schema-7.0.11.tgz#d421b6c527a3037f7c84433fd2c4229e016863d3"
@@ -1964,6 +1969,25 @@ add-dom-event-listener@^1.1.0:
   integrity sha1-apLbOg3Qq8JU4JXA8dwUrLuq4xA=
   dependencies:
     object-assign "4.x"
+
+ahooks-v3-count@^1.0.0:
+  version "1.0.0"
+  resolved "https://artifactory.gz.cvte.cn/artifactory/api/npm/cvte-npm-registry/ahooks-v3-count/-/ahooks-v3-count-1.0.0.tgz#ddeb392e009ad6e748905b3cbf63a9fd8262ca80"
+  integrity sha1-3es5LgCa1udIkFs8v2Op/YJiyoA=
+
+ahooks@^3.7.0:
+  version "3.7.0"
+  resolved "https://artifactory.gz.cvte.cn/artifactory/api/npm/cvte-npm-registry/ahooks/-/ahooks-3.7.0.tgz#e143ad3f1f1a05387c30031bf5634c9e9fa05d87"
+  integrity sha1-4UOtPx8aBTh8MAMb9WNMnp+gXYc=
+  dependencies:
+    "@types/js-cookie" "^2.x.x"
+    ahooks-v3-count "^1.0.0"
+    dayjs "^1.9.1"
+    intersection-observer "^0.12.0"
+    js-cookie "^2.x.x"
+    lodash "^4.17.21"
+    resize-observer-polyfill "^1.5.1"
+    screenfull "^5.0.0"
 
 ajv-keywords@^3.5.2:
   version "3.5.2"
@@ -2731,7 +2755,7 @@ d@1, d@^1.0.1:
     es5-ext "^0.10.50"
     type "^1.0.1"
 
-dayjs@^1.11.2, dayjs@^1.11.4:
+dayjs@^1.11.2, dayjs@^1.11.4, dayjs@^1.9.1:
   version "1.11.5"
   resolved "https://artifactory.gz.cvte.cn/artifactory/api/npm/cvte-npm-registry/dayjs/-/dayjs-1.11.5.tgz#00e8cc627f231f9499c19b38af49f56dc0ac5e93"
   integrity sha1-AOjMYn8jH5SZwZs4r0n1bcCsXpM=
@@ -4123,6 +4147,11 @@ internal-slot@^1.0.3:
     has "^1.0.3"
     side-channel "^1.0.4"
 
+intersection-observer@^0.12.0:
+  version "0.12.2"
+  resolved "https://artifactory.gz.cvte.cn/artifactory/api/npm/cvte-npm-registry/intersection-observer/-/intersection-observer-0.12.2.tgz#4a45349cc0cd91916682b1f44c28d7ec737dc375"
+  integrity sha1-SkU0nMDNkZFmgrH0TCjX7HN9w3U=
+
 intl-format-cache@^4.2.21:
   version "4.3.1"
   resolved "https://artifactory.gz.cvte.cn/artifactory/api/npm/cvte-npm-registry/intl-format-cache/-/intl-format-cache-4.3.1.tgz#484d31a9872161e6c02139349b259a6229ade377"
@@ -4484,6 +4513,11 @@ jest-worker@^28.1.3:
     "@types/node" "*"
     merge-stream "^2.0.0"
     supports-color "^8.0.0"
+
+js-cookie@^2.x.x:
+  version "2.2.1"
+  resolved "https://artifactory.gz.cvte.cn/artifactory/api/npm/cvte-npm-registry/js-cookie/-/js-cookie-2.2.1.tgz#69e106dc5d5806894562902aa5baec3744e9b2b8"
+  integrity sha1-aeEG3F1YBolFYpAqpbrsN0Tpsrg=
 
 "js-tokens@^3.0.0 || ^4.0.0", js-tokens@^4.0.0:
   version "4.0.0"
@@ -5920,6 +5954,11 @@ schema-utils@^3.0.0, schema-utils@^3.1.1:
     "@types/json-schema" "^7.0.8"
     ajv "^6.12.5"
     ajv-keywords "^3.5.2"
+
+screenfull@^5.0.0:
+  version "5.2.0"
+  resolved "https://artifactory.gz.cvte.cn/artifactory/api/npm/cvte-npm-registry/screenfull/-/screenfull-5.2.0.tgz#6533d524d30621fc1283b9692146f3f13a93d1ba"
+  integrity sha1-ZTPVJNMGIfwSg7lpIUbz8TqT0bo=
 
 select-hose@^2.0.0:
   version "2.0.0"
