@@ -17,6 +17,7 @@ const G2 = () => {
     data
   ) => {
     chart.data(data);
+    console.log("chart", chart);
     chart.line().position("Date*Close").color("Close");
     chart.scale({
       Close: {

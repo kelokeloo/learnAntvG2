@@ -1,4 +1,4 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { Chart } from "@antv/g2";
 import { useCreation } from "ahooks";
 
@@ -10,20 +10,6 @@ export type G2ChartProps<TData> = {
   data: TData | undefined;
   configCallback: TChartCfgCallback<TData>;
 };
-// 组件入口
-function G2Chart<TData>(props: G2ChartProps<TData>) {
-  const { chartCfg, data, configCallback } = props;
-  const ref = useRef(null);
-  useChart(ref, chartCfg, data, configCallback);
-
-  return (
-    <div
-      ref={ref}
-      className="w-full h-full"
-      style={generateLayout(chartCfg)}
-    ></div>
-  );
-}
 
 function useChart<TRef = any, TData = any>(
   ref: React.MutableRefObject<TRef>,
@@ -66,6 +52,45 @@ function generateLayout(chartCfg) {
     width: `${width}px`,
     height: `${height}px`,
   };
+}
+
+// 组件入口
+function G2Chart<TData>(props: G2ChartProps<TData>) {
+  const { chartCfg, data, configCallback } = props;
+  const ref = useRef(undefined);
+  const [chart, setChart] = useState<Chart>();
+  // useChart(ref, chartCfg, data, configCallback);
+
+  const refCallback = (node) => {
+    console.log("node", node);
+    if (node) {
+      const chartInstance = new Chart({
+        ...chartCfg,
+        container: node,
+      });
+      setChart(chartInstance);
+    } else {
+      chart?.destroy();
+    }
+  };
+  useEffect(() => {
+    if (chart && data && configCallback) {
+      configCallback(chart, data);
+      chart.render();
+    }
+    // 及时销毁
+    return () => {
+      chart?.destroy();
+    };
+  }, [chart, data, configCallback]);
+
+  return (
+    <div
+      ref={refCallback}
+      className="w-full h-full"
+      style={generateLayout(chartCfg)}
+    ></div>
+  );
 }
 
 export default G2Chart;
