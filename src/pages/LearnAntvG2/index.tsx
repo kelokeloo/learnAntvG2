@@ -31,11 +31,10 @@ const G2 = () => {
   };
 
   return (
-    <>
-      <div>
-        <G2Chart chartCfg={chartConfig} data={data} configCallback={callback} />
-      </div>
-    </>
+    <div>
+      g2
+      <G2Chart chartCfg={chartConfig} data={data} configCallback={callback} />
+    </div>
   );
 };
 

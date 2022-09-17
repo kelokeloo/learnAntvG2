@@ -10,8 +10,18 @@
   },
   "dependencies": {
     "@antv/g2": "^4.2.7",
+    "@elastic/charts": "^48.0.1",
+    "@elastic/datemath": "^5.0.3",
+    "@elastic/eui": "^67.0.0",
+    "@emotion/cache": "^11.10.3",
+    "@emotion/react": "^11.10.4",
+    "@types/d3": "^7.4.0",
     "ahooks": "^3.7.0",
     "axios": "^0.27.2",
+    "d3": "^7.6.1",
+    "moment": "^2.29.4",
+    "moment-timezone": "^0.5.37",
+    "prop-types": "^15.8.1",
     "react-query": "^3.39.2",
     "umi": "^4.0.18"
   },

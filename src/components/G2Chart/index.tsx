@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect } from "react";
 import { Chart } from "@antv/g2";
 import { useCreation } from "ahooks";
 
@@ -57,32 +57,11 @@ function generateLayout(chartCfg) {
 // 组件入口
 function G2Chart<TData>(props: G2ChartProps<TData>) {
   const { chartCfg, data, configCallback } = props;
-  const ref = useRef(undefined);
-  const [chart, setChart] = useState<Chart>();
+  const ref = useRef(null);
   // useChart(ref, chartCfg, data, configCallback);
-
-  const refCallback = (node) => {
-    console.log("node", node);
-    if (node) {
-      const chartInstance = new Chart({
-        ...chartCfg,
-        container: node,
-      });
-      setChart(chartInstance);
-    } else {
-      chart?.destroy();
-    }
+  const refCallback: React.LegacyRef<HTMLDivElement> = (element) => {
+    console.log("element", element);
   };
-  useEffect(() => {
-    if (chart && data && configCallback) {
-      configCallback(chart, data);
-      chart.render();
-    }
-    // 及时销毁
-    return () => {
-      chart?.destroy();
-    };
-  }, [chart, data, configCallback]);
 
   return (
     <div
@@ -92,5 +71,4 @@ function G2Chart<TData>(props: G2ChartProps<TData>) {
     ></div>
   );
 }
-
 export default G2Chart;
