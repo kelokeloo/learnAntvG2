@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import MultilineChart, { TDimensions } from "./MultilineChart";
+import MultilineChart from "./views/MultilineChart";
 import schc from "./SCHC.json";
 import vcit from "./VCIT.json";
 import portfolio from "./portfolio.json";
@@ -20,7 +20,7 @@ const LearnD3 = () => {
     color: "#5e4fa2",
     items: vcit.map((d) => ({ ...d, date: new Date(d.date) })),
   };
-  const dimensions: TDimensions = {
+  const dimensions = {
     width: 600,
     height: 300,
     margin: {
@@ -34,6 +34,7 @@ const LearnD3 = () => {
   return (
     <div className="App">
       <MultilineChart
+        // @ts-ignore
         data={[portfolioData, schcData, vcitData]}
         dimensions={dimensions}
       />
