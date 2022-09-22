@@ -19,6 +19,7 @@
     "ahooks": "^3.7.0",
     "axios": "^0.27.2",
     "d3": "^7.6.1",
+    "lodash": "^4.17.21",
     "moment": "^2.29.4",
     "moment-timezone": "^0.5.37",
     "prop-types": "^15.8.1",
