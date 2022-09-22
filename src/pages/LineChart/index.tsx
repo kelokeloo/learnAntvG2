@@ -1,45 +1,78 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import aapl from "./Data/aapl.json";
 import * as d3 from "d3";
 import { useCreation, useSize } from "ahooks";
 
+type TAapl = { date: string; close: number };
+
 type AxisProps = {
-  domain: [Date, Date] | undefined;
-  range: [number, number] | undefined;
   position: { x: number; y: number } | undefined;
+  scale: d3.ScaleTime<number, number, never> | undefined;
 };
 
 // 绘制x轴
 const XAxis = (props: AxisProps) => {
-  const { domain, range, position } = props;
+  const { position, scale } = props;
   const refCallback: React.LegacyRef<SVGGElement> = (el) => {
-    if (el && domain && range) {
-      const scaleMethod = d3.scaleTime().domain(domain).range(range).nice();
-      const axis = d3.axisBottom(scaleMethod);
+    if (el && scale && position) {
+      const axis = d3.axisBottom(scale);
       d3.select(el)
         .call(axis)
-        .attr("transform", `translate(${position?.x} ${position?.y})`);
+        .attr("transform", `translate(${position.x} ${position.y})`);
     }
   };
   return <g ref={refCallback}></g>;
 };
 
 type YAxisProps = {
-  domain: [number, number] | undefined;
-  range: [number, number] | undefined;
+  scale: d3.ScaleLinear<number, number, never> | undefined;
 };
 
 // 绘制y轴
 const YAxis = (props: YAxisProps) => {
-  const { domain, range } = props;
+  const { scale } = props;
   const refCallback: React.LegacyRef<SVGGElement> = (el) => {
-    if (el && domain && range) {
-      const scaleMethod = d3.scaleLinear().domain(domain).range(range).nice();
-      const axis = d3.axisLeft(scaleMethod);
+    if (el && scale) {
+      const axis = d3.axisLeft(scale);
       d3.select(el).call(axis);
     }
   };
   return <g ref={refCallback}></g>;
+};
+
+type LineProps = {
+  xScale: d3.ScaleTime<number, number, never> | undefined;
+  yScale: d3.ScaleLinear<number, number, never> | undefined;
+  data: TAapl[];
+};
+
+const Line = (props: LineProps) => {
+  const { xScale, yScale, data } = props;
+  const [lineNode, setLineNode] = useState<SVGPathElement | null>(null);
+
+  const serializer = useCreation(() => {
+    if (xScale && yScale) {
+      return d3
+        .line<TAapl>()
+        .x((d) => xScale(new Date(d.date)))
+        .y((d) => yScale(d.close));
+    }
+  }, [xScale, yScale]);
+
+  const refCallback: React.LegacyRef<SVGPathElement> | undefined = (el) => {
+    setLineNode(el);
+  };
+  useEffect(() => {
+    if (lineNode && serializer) {
+      d3.select(lineNode)
+        .datum(data)
+        .attr("d", (d) => serializer(d))
+        .attr("fill", "none")
+        .attr("stroke", "black");
+    }
+  }, [lineNode, serializer]);
+
+  return <path ref={refCallback}></path>;
 };
 
 const LineChart = () => {
@@ -106,6 +139,12 @@ const LineChart = () => {
       return [0, innerWidth];
     }
   }, [innerWidth]);
+  // scale
+  const xScale = useCreation(() => {
+    if (xDomain && xRange) {
+      return d3.scaleTime().domain(xDomain).range(xRange);
+    }
+  }, [xDomain, xRange]);
 
   const yDomain = d3.extent(aapl, (d) => d.close) as unknown as [
     number,
@@ -117,6 +156,14 @@ const LineChart = () => {
     }
   }, [innerHeight]);
 
+  const yScale = useCreation(() => {
+    if (yDomain && yRange) {
+      return d3.scaleLinear().domain(yDomain).range(yRange).nice();
+    }
+  }, [xDomain, xRange]);
+
+  // 画线
+
   return (
     <div ref={ref}>
       <svg width={dimensions?.width} height={dimensions?.height}>
@@ -125,8 +172,9 @@ const LineChart = () => {
           height={innerHeight}
           transform={`translate(${mainContainerOffset?.x} ${mainContainerOffset?.y})`}
         >
-          <XAxis domain={xDomain} range={xRange} position={xAxisOffset} />
-          <YAxis domain={yDomain} range={yRange} />
+          <XAxis scale={xScale} position={xAxisOffset} />
+          <YAxis scale={yScale} />
+          <Line data={aapl} xScale={xScale} yScale={yScale} />
         </g>
       </svg>
     </div>
