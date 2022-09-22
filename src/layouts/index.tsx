@@ -26,6 +26,9 @@ export default function Layout() {
         <li>
           <Link to="/learn-d3">d3</Link>
         </li>
+        <li>
+          <Link to="/line-chart">LineChart</Link>
+        </li>
       </ul>
       <QueryClientProvider client={queryClient}>
         <EuiProvider colorMode="light">
