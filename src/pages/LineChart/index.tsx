@@ -7,6 +7,7 @@ import YAxis from "./components/YAxis";
 import Line from "./components/Line";
 import AxisPointer from "./components/AxisPointer";
 import Tooltip from "./components/Tooltip";
+import Toolbox from "./components/Toolbox";
 
 type TAapl = { date: string; close: number };
 
@@ -160,6 +161,8 @@ const LineChart = () => {
     }
   }, [serializer, xScale, cursorPos]);
 
+  const toolboxData = ["2007-06-06T00:00:00.000Z", "2010-08-16T00:00:00.000Z"];
+
   return (
     <div ref={ref} style={{ position: "relative" }}>
       <svg
@@ -194,6 +197,16 @@ const LineChart = () => {
             xAccessor={xAccessor}
             data={aapl}
           />
+          {toolboxData?.map((item) => (
+            <Toolbox
+              x={new Date(item)}
+              xAccessor={xAccessor}
+              data={aapl}
+              serializer={serializer}
+              xScale={xScale}
+              innerHeight={innerHeight}
+            />
+          ))}
         </g>
       </svg>
     </div>
