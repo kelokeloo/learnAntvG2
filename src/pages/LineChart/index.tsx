@@ -4,216 +4,18 @@ import * as d3 from "d3";
 import { useCreation, useSetState, useSize } from "ahooks";
 import moment from "moment";
 import { round } from "lodash";
+import XAxis from "./components/XAxis";
+import YAxis from "./components/YAxis";
+import Line from "./components/Line";
+import AxisPointer from "./components/AxisPointer";
 
 type TAapl = { date: string; close: number };
-
-type TDimensions =
-  | {
-      width: number;
-      height: number;
-      margin: {
-        top: number;
-        right: number;
-        bottom: number;
-        left: number;
-      };
-    }
-  | undefined;
-
-type AxisProps = {
-  position: { x: number; y: number } | undefined;
-  scale: d3.ScaleTime<number, number, never> | undefined;
-};
-
-// 绘制x轴
-const XAxis = (props: AxisProps) => {
-  const { position, scale } = props;
-  const refCallback: React.LegacyRef<SVGGElement> = (el) => {
-    if (el && scale && position) {
-      const axis = d3.axisBottom(scale);
-      d3.select(el)
-        .call(axis)
-        .attr("transform", `translate(${position.x} ${position.y})`);
-    }
-  };
-  return <g ref={refCallback}></g>;
-};
-
-type YAxisProps = {
-  scale: d3.ScaleLinear<number, number, never> | undefined;
-};
-
-// 绘制y轴
-const YAxis = (props: YAxisProps) => {
-  const { scale } = props;
-  const refCallback: React.LegacyRef<SVGGElement> = (el) => {
-    if (el && scale) {
-      const axis = d3.axisLeft(scale);
-      d3.select(el).call(axis);
-    }
-  };
-  return <g ref={refCallback}></g>;
-};
-
-type LineProps = {
-  data: TAapl[];
-  serializer: d3.Line<TAapl> | undefined;
-};
-
-const Line = (props: LineProps) => {
-  const { data, serializer } = props;
-  const [lineNode, setLineNode] = useState<SVGPathElement | null>(null);
-
-  const refCallback: React.LegacyRef<SVGPathElement> | undefined = (el) => {
-    setLineNode(el);
-  };
-  useEffect(() => {
-    if (lineNode && serializer) {
-      d3.select(lineNode)
-        .datum(data)
-        .attr("d", (d) => serializer(d))
-        .attr("fill", "none")
-        .attr("stroke", "black");
-    }
-  }, [lineNode, serializer]);
-
-  return <path ref={refCallback}></path>;
-};
-
-type TLine = {
-  x1: number;
-  y1: number;
-  x2: number;
-  y2: number;
-};
-// 绘制AxisPointer
-type AxisPointerProps = {
-  innerWidth: number | undefined;
-  innerHeight: number | undefined;
-  cursorPos:
-    | {
-        offsetX: number;
-        offsetY: number;
-      }
-    | undefined;
-  xScale: d3.ScaleTime<number, number, never> | undefined;
-  yScale: d3.ScaleLinear<number, number, never> | undefined;
-  serializer: d3.Line<TAapl> | undefined;
-  dimensions: TDimensions;
-};
-
-const AxisPointer = (props: AxisPointerProps) => {
-  const {
-    innerWidth,
-    innerHeight,
-    cursorPos,
-    xScale,
-    yScale,
-    serializer,
-    dimensions,
-  } = props;
-  //
-  const pointerInfo = useCreation(() => {
-    if (
-      innerWidth &&
-      innerHeight &&
-      cursorPos &&
-      xScale &&
-      yScale &&
-      serializer &&
-      dimensions
-    ) {
-      const curDate = xScale.invert(cursorPos.offsetX);
-      // 二分访问器
-      const bisect = d3.bisector<TAapl, Date>((d) => new Date(d.date)).left;
-      const yOffset = serializer.y()(aapl[bisect(aapl, curDate)], 0, aapl);
-
-      //
-      const curMoment = moment(curDate);
-      const curClose = yScale.invert(yOffset);
-      const xLabel = curMoment.format("YYYY-MM-DD");
-      const yLabel = round(curClose);
-
-      const horizontal: TLine = {
-        x1: 0,
-        y1: yOffset,
-        x2: innerWidth,
-        y2: yOffset,
-      };
-      const vertical: TLine = {
-        x1: cursorPos.offsetX,
-        y1: 0,
-        x2: cursorPos.offsetX,
-        y2: innerHeight,
-      };
-
-      const horizontalLabel = {
-        x: -dimensions.margin.left,
-        y: yOffset,
-        label: yLabel,
-        textAnchor: "right",
-      };
-
-      const verticalLabel = {
-        x: cursorPos.offsetX,
-        y: innerHeight + 16,
-        label: xLabel,
-        textAnchor: "middle",
-      };
-
-      return {
-        lines: [horizontal, vertical],
-        labels: [horizontalLabel, verticalLabel],
-      };
-    }
-  }, [
-    innerWidth,
-    innerHeight,
-    cursorPos,
-    xScale,
-    yScale,
-    serializer,
-    dimensions,
-  ]);
-  return (
-    <g>
-      <defs>
-        <filter id="labelBackground">
-          <feFlood
-            floodColor={"white"}
-            floodOpacity="1"
-            result="bgMiddleware"
-          ></feFlood>
-          <feMerge>
-            <feMergeNode in="bgMiddleware" />
-            <feMergeNode in="SourceGraphic" />
-          </feMerge>
-        </filter>
-      </defs>
-      {pointerInfo?.lines?.map((item, index) => (
-        <line key={index} {...item} stroke="#e0e0e0"></line>
-      ))}
-      {pointerInfo?.labels?.map((item, index) => (
-        <text
-          filter="url(#labelBackground)"
-          x={item.x}
-          y={item.y}
-          fill="black"
-          textAnchor={item.textAnchor}
-          style={{ backgroundColor: "black" }}
-        >
-          {item.label}
-        </text>
-      ))}
-    </g>
-  );
-};
 
 const LineChart = () => {
   const ref = useRef(null);
   const size = useSize(ref);
 
-  const dimensions: TDimensions = useCreation(() => {
+  const dimensions: BaseTypes.TDimensions = useCreation(() => {
     if (size) {
       const { width } = size;
       return {
@@ -362,6 +164,7 @@ const LineChart = () => {
           <YAxis scale={yScale} />
           <Line data={aapl} serializer={serializer} />
           <AxisPointer
+            data={aapl}
             innerWidth={innerWidth}
             innerHeight={innerHeight}
             cursorPos={cursorPos}
@@ -369,6 +172,7 @@ const LineChart = () => {
             yScale={yScale}
             serializer={serializer}
             dimensions={dimensions}
+            xAccessor={(d) => new Date(d.date)}
           />
         </g>
       </svg>
