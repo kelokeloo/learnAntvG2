@@ -148,15 +148,17 @@ const AxisPointer = (props: AxisPointerProps) => {
       };
 
       const horizontalLabel = {
-        x: 0 - dimensions.margin.left,
+        x: -dimensions.margin.left,
         y: yOffset,
         label: yLabel,
+        textAnchor: "right",
       };
 
       const verticalLabel = {
         x: cursorPos.offsetX,
         y: innerHeight + 16,
         label: xLabel,
+        textAnchor: "middle",
       };
 
       return {
@@ -175,14 +177,29 @@ const AxisPointer = (props: AxisPointerProps) => {
   ]);
   return (
     <g>
+      <defs>
+        <filter id="labelBackground">
+          <feFlood
+            floodColor={"white"}
+            floodOpacity="1"
+            result="bgMiddleware"
+          ></feFlood>
+          <feMerge>
+            <feMergeNode in="bgMiddleware" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+      </defs>
       {pointerInfo?.lines?.map((item, index) => (
         <line key={index} {...item} stroke="#e0e0e0"></line>
       ))}
       {pointerInfo?.labels?.map((item, index) => (
         <text
+          filter="url(#labelBackground)"
           x={item.x}
           y={item.y}
           fill="black"
+          textAnchor={item.textAnchor}
           style={{ backgroundColor: "black" }}
         >
           {item.label}
