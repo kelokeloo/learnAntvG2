@@ -2,12 +2,11 @@ import React, { useEffect, useRef, useState } from "react";
 import aapl from "./Data/aapl.json";
 import * as d3 from "d3";
 import { useCreation, useSetState, useSize } from "ahooks";
-import moment from "moment";
-import { round } from "lodash";
 import XAxis from "./components/XAxis";
 import YAxis from "./components/YAxis";
 import Line from "./components/Line";
 import AxisPointer from "./components/AxisPointer";
+import Tooltip from "./components/Tooltip";
 
 type TAapl = { date: string; close: number };
 
@@ -130,6 +129,8 @@ const LineChart = () => {
     }
   }, [svgContainer]);
 
+  const xAccessor = (d) => new Date(d.date);
+
   const cursorPos = useCreation(() => {
     if (svgOffset && dimensions && innerWidth && innerHeight) {
       let offsetX: number = svgOffset.offsetX - dimensions.margin.left;
@@ -145,6 +146,19 @@ const LineChart = () => {
       };
     }
   }, [svgOffset, dimensions, innerWidth, innerHeight]);
+
+  const linePointPos = useCreation(() => {
+    // 二分访问器
+    if (serializer && xScale && cursorPos) {
+      const curDate = xScale.invert(cursorPos.offsetX);
+      const bisect = d3.bisector(xAccessor).left;
+      const yOffset = serializer.y()(aapl[bisect(aapl, curDate)], 0, aapl);
+      return {
+        offsetX: cursorPos.offsetX,
+        offsetY: yOffset,
+      };
+    }
+  }, [serializer, xScale, cursorPos]);
 
   return (
     <div ref={ref} style={{ position: "relative" }}>
@@ -172,7 +186,13 @@ const LineChart = () => {
             yScale={yScale}
             serializer={serializer}
             dimensions={dimensions}
-            xAccessor={(d) => new Date(d.date)}
+            xAccessor={xAccessor}
+          />
+          <Tooltip
+            linePointPos={linePointPos}
+            xScale={xScale}
+            xAccessor={xAccessor}
+            data={aapl}
           />
         </g>
       </svg>

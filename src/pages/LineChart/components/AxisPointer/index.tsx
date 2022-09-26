@@ -13,12 +13,7 @@ type TLine = {
 type AxisPointerProps<TDataItem> = {
   innerWidth: number | undefined;
   innerHeight: number | undefined;
-  cursorPos:
-    | {
-        offsetX: number;
-        offsetY: number;
-      }
-    | undefined;
+  cursorPos: BaseTypes.TPos;
   xScale: d3.ScaleTime<number, number, never> | undefined;
   yScale: d3.ScaleLinear<number, number, never> | undefined;
   serializer: d3.Line<TDataItem> | undefined;
@@ -124,6 +119,7 @@ function AxisPointer<TDataItem>(props: AxisPointerProps<TDataItem>) {
       ))}
       {pointerInfo?.labels?.map((item, index) => (
         <text
+          key={index}
           filter="url(#labelBackground)"
           x={item.x}
           y={item.y}

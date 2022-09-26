@@ -11,4 +11,11 @@ declare namespace BaseTypes {
         };
       }
     | undefined;
+
+  type TPos =
+    | {
+        offsetX: number;
+        offsetY: number;
+      }
+    | undefined;
 }
