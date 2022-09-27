@@ -32,6 +32,9 @@ export default function Layout() {
         <li>
           <Link to="/bar-chart">BarChart</Link>
         </li>
+        <li>
+          <Link to="/pie-chart">PieChart</Link>
+        </li>
       </ul>
       <QueryClientProvider client={queryClient}>
         <EuiProvider colorMode="light">

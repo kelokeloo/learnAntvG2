@@ -6,4 +6,5 @@ export default [
   { path: "/learn-d3", component: "LearnD3" },
   { path: "/line-chart", component: "LineChart" },
   { path: "/bar-chart", component: "BarChart" },
+  { path: "/pie-chart", component: "PieChart" },
 ];
