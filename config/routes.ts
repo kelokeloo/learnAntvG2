@@ -5,4 +5,5 @@ export default [
   { path: "/learn-elastic-ui", component: "LearnElasticUi" },
   { path: "/learn-d3", component: "LearnD3" },
   { path: "/line-chart", component: "LineChart" },
+  { path: "/bar-chart", component: "BarChart" },
 ];

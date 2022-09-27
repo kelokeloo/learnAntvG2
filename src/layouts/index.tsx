@@ -29,6 +29,9 @@ export default function Layout() {
         <li>
           <Link to="/line-chart">LineChart</Link>
         </li>
+        <li>
+          <Link to="/bar-chart">BarChart</Link>
+        </li>
       </ul>
       <QueryClientProvider client={queryClient}>
         <EuiProvider colorMode="light">

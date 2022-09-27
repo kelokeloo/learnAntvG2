@@ -197,8 +197,9 @@ const LineChart = () => {
             xAccessor={xAccessor}
             data={aapl}
           />
-          {toolboxData?.map((item) => (
+          {toolboxData?.map((item, index) => (
             <Toolbox
+              key={index}
               x={new Date(item)}
               xAccessor={xAccessor}
               data={aapl}
