@@ -112,9 +112,10 @@ const PieChart = () => {
               innerHeight ? innerHeight / 2 : 0
             })`}
           >
-            {PieData?.map((item) => (
+            {PieData?.map((item, index) => (
               // @ts-ignore
               <path
+                key={index}
                 d={arc(item)}
                 fill={colorScale(item.data.name)}
                 className="pie-chart-pie"

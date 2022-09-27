@@ -7,4 +7,6 @@ export default [
   { path: "/line-chart", component: "LineChart" },
   { path: "/bar-chart", component: "BarChart" },
   { path: "/pie-chart", component: "PieChart" },
+  { path: "/pie-chart", component: "PieChart" },
+  { path: "/dragging", component: "Drag" },
 ];

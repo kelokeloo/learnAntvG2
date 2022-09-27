@@ -35,6 +35,9 @@ export default function Layout() {
         <li>
           <Link to="/pie-chart">PieChart</Link>
         </li>
+        <li>
+          <Link to="/dragging">dragging</Link>
+        </li>
       </ul>
       <QueryClientProvider client={queryClient}>
         <EuiProvider colorMode="light">
